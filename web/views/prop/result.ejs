@@ -1,0 +1,131 @@
+	<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+		<% if(req.session.usrname == null){ %>
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="http://localhost:1337/prop/index">Home</a>
+                </li>
+                <li>
+                    <a href="http://localhost:1337/prop/search">Search</a>
+                </li>
+                <li>
+                    <a href="http://localhost:1337/usr/login">Login</a>
+                </li>
+            </ul>
+        <%} else {%>
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="http://localhost:1337/prop/index">Home</a>
+                </li>
+                <li>
+                    <a href="http://localhost:1337/prop/search">Search</a>
+                </li>
+                <li>
+                    <a href="http://localhost:1337/prop/create">Create</a>
+                </li>
+                <li>
+                    <a href="http://localhost:1337/prop/admin">Admin</a>
+                </li>
+                <li>
+                    <a href="http://localhost:1337/usr/logout">Logout</a>
+                </li>
+                <li class="disabled">
+                    Hi, <%=req.session.usrname%>
+                </li>
+            </ul>
+        <% } %>
+			<div class="jumbotron">
+				<h2>
+					Property Rental System
+				</h2>
+				<p>
+					Property Rental Management System is a web-based system to facilitate flatshare and finding roommates.
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<% props.forEach( function(model) { %>
+				<a href="http://localhost:1337/prop/view/<%=model.id%>"><%=model.name%></a>
+				<div class="row">
+					<div class="col-md-6">
+						<img alt="Property Image Preview" src="<%=model.imageurl%>" class="img-rounded">
+					</div>
+					<div class="col-md-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									Estate: <%=model.estate%>
+								</h3>
+							</div>
+							<div class="panel-body">
+								Gross Area: <%=model.garea%>
+							</div>
+							<div class="panel-footer">
+								Rent: <%=model.rent%>
+							</div>
+						</div>
+					</div>
+				</div>
+				<% }); %>
+			</div>
+		
+			<% var current = req.query.page %>
+			<div class="col-md-6">
+				<nav>
+				<ul class="pagination">
+					<%  var current = req.query.page; 
+						var estate = req.query.estate;
+						var bedrooms = req.query.bedrooms %>
+					<li>
+            			<a href="/prop/result/?estate=<%=estate%>&amp;bedrooms<%=bedrooms%>&amp;page=<%=Math.max(current-1, 1)%>" aria-label="Previous">
+            			<span aria-hidden="true">&laquo;</span>
+            			</a>
+        			</li>
+
+					<% for (i=1;i<=count;i++) { %>
+					<li><a href="/prop/result/?estate=<%=estate%>&amp;bedrooms<%=bedrooms%>&amp;page=<%=i%>"> <%=i%></a></li>
+					<% } %>
+
+					<li>
+			            <a href="/prop/result/?estate=<%=estate%>&amp;bedrooms<%=bedrooms%>&amp;page=<%=Math.min(current*1+1, count)%>" aria-label="Next">
+			            <span aria-hidden="true">&raquo;</span>
+			            </a>
+			        </li>
+				</ul>
+				<nav>
+				<h3>
+					Property Search Form
+				</h3>
+				<form role="form" action="/prop/result">
+					<div class="form-group">
+					    <label for="exampleSelect1">Estate: </label>
+					    <select class="form-control" id="exampleSelect1" placeholder="Select estate here" name="estate">
+						    <% allprops.forEach( function(model) { %>
+						    <option><%=model.estate%></option>
+						    <% }); %>
+					    </select>
+					</div>
+					<div class="form-group">						 
+						<label for="exampleInputPassword1">
+							Bedrooms: 
+						</label>
+						<input type="number" class="form-control" id="exampleInputPassword1" name="bedrooms">
+					</div>
+					
+					<button type="submit" class="btn btn-default" method="POST">
+						Submit
+					</button>
+				</form>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

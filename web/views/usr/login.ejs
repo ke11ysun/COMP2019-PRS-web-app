@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12" id="nav">
+        <% if(req.session.usrname == null){ %>
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="http://localhost:1337/prop/index">Home</a>
+                </li>
+                <li>
+                    <a href="http://localhost:1337/prop/search">Search</a>
+                </li>
+                <li>
+                    <a href="http://localhost:1337/usr/login">Login</a>
+                </li>
+            </ul>
+        <%} else {%>
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="http://localhost:1337/prop/index">Home</a>
+                </li>
+                <li>
+                    <a href="http://localhost:1337/prop/search">Search</a>
+                </li>
+                <li>
+                    <a href="http://localhost:1337/prop/create">Create</a>
+                </li>
+                <li>
+                    <a href="http://localhost:1337/prop/admin">Admin</a>
+                </li>
+                <li>
+                    <a href="http://localhost:1337/usr/logout">Logout</a>
+                </li>
+                <li class="disabled">
+                    Hi, <%=req.session.usrname%>
+                </li>
+            </ul>
+        <% } %>
+            <div class="jumbotron">
+                <h2>
+                    Property Rent System
+                </h2>
+                <p>
+                    Property Rental Management System is a web-based system to facilitate flatshare and finding roommates.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<form class="form-signin col-md-4 col-md-offset-4" action="/usr/login" 
+        method="POST">
+
+    <label for="inputUsrname" class="sr-only">Email address</label>
+    <input type="text" id="inputUsername" class="form-control" 
+        placeholder="Usrname" required autofocus name="usrname">
+
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" 
+        placeholder="Password" required name="password">
+    
+    <br>    
+    <button class="btn btn-lg btn-primary btn-block" type="submit">
+        Sign in</button>
+    <p><small>No account? Register </small>
+    <a href="http://localhost:1337/usr/register">here!</a>
+    </p>
+    <!-- <h3 id="err"></h3> -->
+ </form>

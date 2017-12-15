@@ -1,0 +1,64 @@
+	<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+		<% if(req.session.usrname == null){ %>
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="http://localhost:1337/prop/index">Home</a>
+                </li>
+                <li>
+                    <a href="http://localhost:1337/prop/search">Search</a>
+                </li>
+                <li>
+                    <a href="http://localhost:1337/usr/login">Login</a>
+                </li>
+            </ul>
+        <%} else {%>
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="http://localhost:1337/prop/index">Home</a>
+                </li>
+                <li>
+                    <a href="http://localhost:1337/prop/search">Search</a>
+                </li>
+                <li>
+                    <a href="http://localhost:1337/prop/create">Create</a>
+                </li>
+                <li>
+                    <a href="http://localhost:1337/prop/admin">Admin</a>
+                </li>
+                <li>
+                    <a href="http://localhost:1337/usr/logout">Logout</a>
+                </li>
+                <li class="disabled">
+                    Hi, <%=req.session.usrname%>
+                </li>
+            </ul>
+        <% } %>
+			<div class="jumbotron">
+				<h2>
+					Property Rental System
+				</h2>
+				<p>
+					Property Rental Management System is a web-based system to facilitate flatshare and finding roommates.
+				</p>
+			</div>
+		</div>
+		<div>
+
+			<table class="table">
+				<tr>
+					<td width="400px"><%=prop.name%></td>
+				</tr>
+                <% prop.interestedBy.forEach( function(model) { %>
+                <tr>
+                    <td><%=model.usrname%></td>
+                </tr>
+                <% }); %>
+			</table>
+
+		</div>
+	</div>
+	</div>
+
+
