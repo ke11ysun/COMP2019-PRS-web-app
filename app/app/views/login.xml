@@ -1,0 +1,13 @@
+<Alloy>
+	<!-- <Collection src="prop" /> -->
+    <Window id="login" title="Login">
+<!-- 		<Button title="Back" onClick="reload" top="50dp" />  -->
+		<TableView>
+		    <TableViewRow layout="vertical">
+		       <TextField id="textField" hintText="userid"/>
+				<TextField id="textField2" hintText="password"/>
+				<Button title="Login" onClick="loginFunction" top="50dp" /> 
+		    </TableViewRow>
+		</TableView>
+    </Window>
+</Alloy>

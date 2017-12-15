@@ -1,0 +1,11 @@
+<Alloy>
+	<Collection src="estates" />
+    <Window id="map" title="Address" navBarHidden="true">
+		<!-- <Button title="Back" onClick="reload" top="50dp" /> //go back to Tab2 or Tab3 -->
+        <Module id="mapView" module="ti.map" method="createView" userLocation="true" dataCollection="estates" dataTransform="mapTrans">
+        	<!-- dataFilter="filterFunction" //show the location of chosen property -->
+			<!-- <Annotation title="{Name}" subtitle="{ChineseName}" latitude="{Latitude}" longtitude="{Longtitude}"/> -->
+			<Annotation id="anno" />
+		</Module>
+    </Window>
+</Alloy>

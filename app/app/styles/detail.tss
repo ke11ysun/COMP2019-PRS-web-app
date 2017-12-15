@@ -1,0 +1,16 @@
+".container" : {
+
+}
+
+
+"TextArea": {
+    left: "10dp",
+    right: "10dp",
+    editable: "false",
+    scrollable: "false",
+    textAlign: "left"
+}
+
+"#textArea2": {
+    autoLink: Titanium.UI.AUTOLINK_ALL
+}

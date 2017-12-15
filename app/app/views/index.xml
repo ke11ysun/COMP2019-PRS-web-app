@@ -1,0 +1,83 @@
+<Alloy>
+	<Collection src="prop" />
+	<Collection src="estates" />
+	<TabGroup>
+		<Tab title="Properties" icon="KS_nav_ui.png">
+			<Window title="Home">
+				<TableView dataCollection="prop" dataTransform="transformFunction" onClick="detailClick">
+				    <TableViewRow layout="vertical" name="{name}">
+				        <ImageView image="{imageurl}" top="20dp" />
+				        <Label text="{name}" bottom="20dp" /> 
+				    </TableViewRow>
+				</TableView>
+			</Window>
+		</Tab>
+		
+
+		<Tab title="Rent" icon="KS_nav_views.png">
+			<Window title="Rent">
+				<TableView onClick="roomClick"> 
+<!-- 				    <TableViewRow dataFilter="sRent">
+				        <Label text="{rent}" bottom="20dp" rent="{rent}"/> 
+						<TextArea text="{bedrooms}" bottom="20dp" room_num="{bedrooms}" onClick="roomClick"/>
+				    </TableViewRow>
+				    <TableViewRow dataFilter="lRent">
+				        <Label text="{rent}" bottom="20dp" rent="{rent}"/> 
+						<TextArea text="{bedrooms}" bottom="20dp" room_num="{bedrooms}" onClick="roomClick"/>
+				    </TableViewRow> -->
+				    <TableViewSection headerTitle="$15000-">
+				    	<TableViewRow title="2 bedrooms-" rent="s" room_num="2-" />
+						<TableViewRow title="3 bedrooms+" rent="s" room_num="3+" />
+				    </TableViewSection>
+				    <TableViewSection headerTitle="$15000+">
+				    	<TableViewRow title="2 bedrooms-" rent="l" room_num="2-" />
+						<TableViewRow title="3 bedrooms+" rent="l" room_num="3+" />
+				    </TableViewSection>
+				    <!-- <TableViewRow title="{name}"  onClick="roomClick" room_num="{bedrooms}">
+				    	<Label text="{Name}" top="20dp" />
+				    </TableViewRow> -->
+				</TableView>			
+			</Window>
+		</Tab>
+
+
+		<Tab title="District" icon="KS_nav_views.png">
+			<Window title="District">
+				<TableView dataCollection="estates" onClick="nameClick" dataTransform="districtTrans">
+					<!-- dataFilter="distinctDistrict" -->
+				    <TableViewSection headerTitle="{custom}" district="{District}">
+				    	<TableViewRow title="{Name}" ename="{Name}" />
+					</TableViewSection>
+				</TableView>
+			</Window>
+		</Tab>
+		
+
+		<Tab title="Map" icon="KS_nav_views.png"> 
+    		<Window title="Map" navBarHidden="true">
+        		<Module id="mapView" module="ti.map" method="createView" userLocation="true" dataCollection="estates" dataTransform="mapTrans" onClick="mapClick" >
+        		<!-- <Annotation title="{name}" subtitle="{cname}"/> -->
+        		<!-- <Button title="Move" bottom="10dp" onClick="btClick" /> -->
+        	</Module>      	
+    		</Window>
+		</Tab>
+
+
+		<Tab title="Info" icon="KS_nav_views.png">
+			<Window title="Personal Info">
+				<TableView>
+					<!-- dataCollection="estates" onClick="nameClick" dataFilter="userFilter" -->
+				    <TableViewRow layout="vertical">
+				        <ImageView image="https://lastfm-img2.akamaized.net/i/u/300x300/c4f94624000c4467a92f2bbcd667ad30.jpg" />
+				        <Label text="SJX" top="20dp" bottom="20dp" /> 
+				        <Label class="label2" text="Logoff/Login" onClick="log"/>
+				        <Label class="label2" text="Interested Property" />
+				        <Label class="label2" text="About Us" />
+
+				    </TableViewRow>
+				</TableView>
+			</Window>
+		</Tab>
+
+	</TabGroup>
+</Alloy>

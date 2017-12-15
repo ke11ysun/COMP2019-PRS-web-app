@@ -1,0 +1,9 @@
+<Alloy>
+	<Collection src="prop" />
+    <Window id="ename" title="Estates">
+		<!-- <Button title="Back" onClick="reload" top="50dp" /> //go back to Tap2 -->
+        <TableView dataCollection="prop" dataFilter="filterFunction" onClick="detailClick" >
+		    <TableViewRow title="{name}" name="{name}" />
+		</TableView>
+    </Window>
+</Alloy>
